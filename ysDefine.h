@@ -22,7 +22,7 @@ namespace YS
 
 #ifdef _UNICODE
     using String = std::wstring;
-#elif
+#else
     using String = std::string;
 #endif
 }
