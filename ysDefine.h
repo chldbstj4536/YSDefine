@@ -1,7 +1,8 @@
-#pragma once
+﻿#pragma once
 
 #include <cstdint>
 #include <string>
+#include <exception>
 
 namespace YS
 {
@@ -22,7 +23,11 @@ namespace YS
 
 #ifdef _UNICODE
     using String = std::wstring;
+    using StringView = std::wstring_view;
 #else
     using String = std::string;
+    using StringView = std::string_view;
 #endif
+
+    class create_failed : public std::exception { };
 }
