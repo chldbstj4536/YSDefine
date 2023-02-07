@@ -29,5 +29,7 @@ namespace YS
     using StringView = std::string_view;
 #endif
 
+    class not_supported : public std::exception { };
     class create_failed : public std::exception { };
+    class division_by_zero : public std::exception { };
 }
