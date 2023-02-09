@@ -29,6 +29,14 @@ namespace YS
     using StringView = std::string_view;
 #endif
 
+    class exception_msg : public std::exception
+    {
+    public:
+        exception_msg(StringView msg = nullptr) : msg(msg) {}
+        virtual const char* what() const override { return msg.data(); }
+    private:
+        StringView msg;
+    };
     class not_supported : public std::exception { };
     class create_failed : public std::exception { };
     class division_by_zero : public std::exception { };
