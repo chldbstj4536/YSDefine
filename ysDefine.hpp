@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <string>
+#include <concepts>
 #include <exception>
 
 namespace YS
@@ -28,6 +29,30 @@ namespace YS
     using String = std::string;
     using StringView = std::string_view;
 #endif
+
+    /////////////////
+    ///  concept  ///
+    /////////////////
+    /**
+     * @brief T를 숫자 타입으로 제약하는 콘셉트
+     */
+    template <typename T>
+    concept number = std::integral<T> || std::floating_point<T>;
+    /**
+     * @brief T를 void타입으로 제약하는 콘셉트
+     */
+    template <typename T>
+    concept non_void = !std::is_void_v<T>;
+    /**
+     * @brief T를 상수형으로 제약하는 콘셉트
+     */
+    template <typename T>
+    concept constant = std::is_const_v<T>;
+    /**
+     * @brief T를 비상수형으로 제약하는 콘셉트
+     */
+    template <typename T>
+    concept non_constant = !std::is_const_v<T>;
 
     class exception_msg : public std::exception
     {
